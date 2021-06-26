@@ -76,7 +76,9 @@
         window.scrollTo(0, document.body.scrollHeight); //to scroll to new msgs?
       }
 
-      //socket.on("connect");
+      socket.on("connect", () => {
+        displayMessage(`You are connected with id: ${socket.id}`);
+      });
 
       form.addEventListener("submit", function (e) {
         e.preventDefault();
