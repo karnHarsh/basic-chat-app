@@ -87,9 +87,9 @@
           socket.emit("chat message", input.value);
           input.value = "";
         }
-        socket.on("chat message", function (msg) {
-          displayMessage(msg);
-        });
+      });
+      socket.on("chat message", function (msg) {
+        displayMessage(msg);
       });
     </script>
   </body>

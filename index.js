@@ -14,12 +14,12 @@ app.get("/", (req, res) => {
 // here we are listening to 'connection' event
 io.on("connection", (socket) => {
   console.log("a user connected");
-  socket.on("disconnect", () => {
-    console.log("user disconnected");
-  });
   socket.on("chat message", (msg) => {
     console.log("chat message received: ", msg);
     io.sockets.emit("chat message", msg);
+    socket.on("disconnect", () => {
+      console.log("user disconnected");
+    });
     //socket.broadcast.emit(msg);
   });
 });
