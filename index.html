@@ -69,6 +69,15 @@
       var input = document.getElementById("input");
       var messages = document.getElementById("messages");
 
+      function displayMessage(msg) {
+        var item = document.createElement("li");
+        item.textContent = msg;
+        messages.append(item);
+        window.scrollTo(0, document.body.scrollHeight); //to scroll to new msgs?
+      }
+
+      //socket.on("connect");
+
       form.addEventListener("submit", function (e) {
         e.preventDefault();
         if (input.value) {
@@ -77,10 +86,7 @@
           input.value = "";
         }
         socket.on("chat message", function (msg) {
-          var item = document.createElement("li");
-          item.textContent = msg;
-          messages.append(item);
-          window.scrollTo(0, document.body.scrollHeight); //to scroll to new msgs?
+          displayMessage(msg);
         });
       });
     </script>
