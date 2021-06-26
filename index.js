@@ -11,6 +11,7 @@ app.get("/", (req, res) => {
 });
 
 //.on is for listening to events
+// here we are listening to 'connection' event
 io.on("connection", (socket) => {
   console.log("a user added");
 });
