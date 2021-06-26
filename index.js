@@ -13,7 +13,13 @@ app.get("/", (req, res) => {
 //.on is for listening to events
 // here we are listening to 'connection' event
 io.on("connection", (socket) => {
-  console.log("a user added");
+  console.log("a user connected");
+  socket.on("disconnect", () => {
+    console.log("user disconnected");
+  });
+  socket.on("chat message", (msg) => {
+    console.log("message: ", msg);
+  });
 });
 
 server.listen(3000, () => {
